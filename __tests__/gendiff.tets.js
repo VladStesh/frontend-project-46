@@ -13,8 +13,5 @@ test('СРАВНЕНИЕ ПЛОСКИХ json ФАЙЛОВ', () => {
   const expectedResult = readFile('result.txt');
   const receivedResult = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'));
 
-  console.log(receivedResult);
-  console.log(expectedResult);
-
   expect(receivedResult).toBe(expectedResult);
 });
