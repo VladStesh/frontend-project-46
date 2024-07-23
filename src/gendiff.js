@@ -5,13 +5,16 @@ import compare from './compares.js';
 const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
 
 const genDiff = (filepath1, filepath2) => {
-  const fullFilePuth1 = getFullPath(filepath1);
-  const fullFilePuth2 = getFullPath(filepath2);
+  const fullFilePath1 = getFullPath(filepath1);
+  const fullFilePath2 = getFullPath(filepath2);
 
-  const data1 = JSON.parse(fs.readFileSync(fullFilePuth1, 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(fullFilePuth2, 'utf-8'));
+  const data1 = JSON.parse(fs.readFileSync(fullFilePath1, 'utf-8'));
+  const data2 = JSON.parse(fs.readFileSync(fullFilePath2, 'utf-8'));
 
-  console.log(compare(data1, data2));
+  const result = compare(data1, data2);
+  console.log(result);
+
+  return result;
 };
 
 export default genDiff;
