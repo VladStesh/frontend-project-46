@@ -1,8 +1,7 @@
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import genDiff from '../src/gendiff.js';
+import path, { dirname } from 'path';
 import fs from 'fs';
-import path from 'path';
+import genDiff from '../src/gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,4 +18,3 @@ test('СРАВНЕНИЕ ПЛОСКИХ json ФАЙЛОВ', () => {
 
   expect(receivedResult).toBe(expectedResult);
 });
-
