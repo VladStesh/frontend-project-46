@@ -12,27 +12,27 @@ const compare = (data1, data2) => {
     //   return { key, type: 'nested', children: compare(data1[key], data2[key]) };
     // }
     if (!Object.hasOwn(data1, key)) {
-      result += `+ ${key}: ${data2[key]}\n`;
+      result += `  + ${key}: ${data2[key]}\n`;
 
       return;
     }
 
     if (!Object.hasOwn(data2, key)) {
-      result += `- ${key}: ${data1[key]}\n`;
+      result += `  - ${key}: ${data1[key]}\n`;
 
       return;
     }
 
     if (!_.isEqual(data1[key], data2[key])) {
-      result += `- ${key}: ${data1[key]}\n+ ${key}: ${data2[key]}\n`;
+      result += `  - ${key}: ${data1[key]}\n  + ${key}: ${data2[key]}\n`;
 
       return;
     }
 
-    result += `  ${key}: ${data1[key]}\n`;
+    result += `    ${key}: ${data1[key]}\n`;
   });
 
-  return result;
+  return `{\n${result}}`;
 };
 
 export default compare;

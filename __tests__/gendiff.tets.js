@@ -15,3 +15,10 @@ test('СРАВНЕНИЕ ПЛОСКИХ json ФАЙЛОВ', () => {
 
   expect(receivedResult).toBe(expectedResult);
 });
+
+test('СРАВНЕНИЕ ПЛОСКИХ yaml ФАЙЛОВ', () => {
+  const expectedResult = readFile('result.txt');
+  const receivedResult = genDiff(getFixturePath('file1.yaml'), getFixturePath('file2.yaml'));
+
+  expect(receivedResult).toBe(expectedResult);
+});

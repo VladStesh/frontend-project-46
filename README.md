@@ -6,3 +6,7 @@
 ### Cравнение плоских объектов .json
 
 [![asciicast](https://asciinema.org/a/8gn4vb5LbGKH1kgMy78OnFw3r.svg)](https://asciinema.org/a/8gn4vb5LbGKH1kgMy78OnFw3r)sudo apt install asciinema
+
+### Cравнение плоских объектов .yaml
+
+[![asciicast](https://asciinema.org/a/R45vEyvLEcsQnWO1vdbe5wxpd.svg)](https://asciinema.org/a/R45vEyvLEcsQnWO1vdbe5wxpd)sudo apt install asciinema
