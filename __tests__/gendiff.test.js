@@ -1,5 +1,5 @@
 import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
+import path from 'path';
 import fs from 'fs';
 import genDiff from '../src/gendiff.js';
 
@@ -31,4 +31,3 @@ describe('genDiff functionality test', () => {
     expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).toEqual(expectedJSONResult);
   });
 });
-
