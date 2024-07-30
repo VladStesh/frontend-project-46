@@ -10,7 +10,8 @@ const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', 
 const readFixture = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf-8').trim();
 
 const expectedStylishResult = readFixture('result.stylish.txt');
-const expectedJSONResult = JSON.parse(readFixture('JSON.result.json'));
+const expectedJSONResult = JSON.parse(readFixture('JSON.result.txt'));
+const expectedPlainResult = readFixture('resultPlain.txt');
 
 describe('genDiff functionality test', () => {
   test('JSON cases', () => {
@@ -19,6 +20,7 @@ describe('genDiff functionality test', () => {
 
     expect(genDiff(filepath1, filepath2)).toEqual(expectedStylishResult);
     expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylishResult);
+    expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlainResult);
     expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).toEqual(expectedJSONResult);
   });
 
@@ -28,6 +30,7 @@ describe('genDiff functionality test', () => {
 
     expect(genDiff(filepath1, filepath2)).toEqual(expectedStylishResult);
     expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylishResult);
+    expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlainResult);
     expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).toEqual(expectedJSONResult);
   });
 });
