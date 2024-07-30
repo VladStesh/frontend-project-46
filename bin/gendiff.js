@@ -5,11 +5,14 @@ import genDiff from '../src/gendiff.js';
 
 program
   .name('gendiff')
-  .description(' Compares two configuration files and shows a difference.')
   .version('1.0.0')
-  .option('-f, --format [type]', 'output format', 'stylish')
-  .argument('<filepath1>')
-  .argument('<filepath2>')
-  .action((file1, file2) => console.log(genDiff(file1, file2)));
+  .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format [type]', 'output format')
+  .arguments('<filepath1> <filepath2>')
+  .helpOption('-h, --h', 'output usage information')
+  .action((filepath1, filepath2, options) => {
+    const difference = genDiff(filepath1, filepath2, options.format);
+    console.log(difference);
+  });
 
 program.parse();

@@ -1,19 +1,20 @@
-import fs from 'fs';
-import path from 'path';
-import compare from './compares.js';
-import parce from './parsers.js';
+import { readFileSync } from 'fs';
+import { resolve, extname } from 'path';
+import { cwd } from 'process';
+import parse from './parse.js';
+import compare from './compare.js';
+import makeFormatted from './formater/formater.js';
 
-const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
-const getFileExtension = (filename) => path.extname(filename).slice(1);
+const getContent = (path) => readFileSync(resolve(cwd(), path));
+const getFileType = (path) => extname(path).slice(1);
 
-const genDiff = (filepath1, filepath2) => {
-  const fullFilePath1 = getFullPath(filepath1);
-  const fullFilePath2 = getFullPath(filepath2);
+const genDiff = (filepath1, filepath2, format = 'stylish') => {
+  const data1 = parse(getContent(filepath1), getFileType(filepath1));
+  const data2 = parse(getContent(filepath2), getFileType(filepath2));
 
-  const data1 = parce(fs.readFileSync(fullFilePath1, 'utf-8'), getFileExtension(fullFilePath1));
-  const data2 = parce(fs.readFileSync(fullFilePath2, 'utf-8'), getFileExtension(fullFilePath2));
-
-  return compare(data1, data2);
+  const difference = compare(data1, data2);
+  const formattedResult = makeFormatted(difference, format);
+  return formattedResult;
 };
 
 export default genDiff;

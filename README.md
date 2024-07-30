@@ -10,3 +10,7 @@
 ### Cравнение плоских объектов .yaml
 
 [![asciicast](https://asciinema.org/a/R45vEyvLEcsQnWO1vdbe5wxpd.svg)](https://asciinema.org/a/R45vEyvLEcsQnWO1vdbe5wxpd)sudo apt install asciinema
+
+### Пример запуска утилиты (сравнение json файлов с вложенными структурами) с выводом результатов в формате stylish
+[![asciicast](https://asciinema.org/a/C2sYiacel8W1d0BTkKkrAcxtJ.svg)](https://asciinema.org/a/C2sYiacel8W1d0BTkKkrAcxtJ)sudo apt install asciinema
+
