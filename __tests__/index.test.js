@@ -10,8 +10,8 @@ const getFixturePath = (filepath) => path.join(__dirname, '..', '__fixtures__', 
 const readFixture = (filepath) => fs.readFileSync(getFixturePath(filepath), 'utf-8').trim();
 
 const expectedStylishResult = readFixture('result.stylish.txt');
-const expectedJSONResult = JSON.parse(readFixture('JSON.result.txt'));
-const expectedPlainResult = readFixture('resultPlain.txt');
+const expectedJSONResult = readFixture('result.json.txt');
+const expectedPlainResult = readFixture('result.plain.txt');
 
 describe('genDiff functionality test', () => {
   test('JSON cases', () => {
