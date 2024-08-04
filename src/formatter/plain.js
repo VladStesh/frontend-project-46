@@ -5,36 +5,45 @@ const stringify = (value) => {
     return '[complex value]';
   }
   if (_.isString(value)) {
-    return `'${(value)}'`;
+    return `'${value}'`;
   }
-  return value;
+  if (value === undefined) {
+    return 'undefined';
+  }
+  if (value === null) {
+    return 'null';
+  }
+  return String(value);
 };
 
 const makePlain = (difference, keyPrefix = '') => {
   const result = difference.reduce((acc, node) => {
+    const currentPath = keyPrefix + node.key;
+
     switch (node.type) {
       case 'unchanged':
         return acc;
       case 'changed': {
-        const line = (`Property '${keyPrefix.concat(node.key)}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`);
-        return ([...acc, line]);
+        const line = `Property '${currentPath}' was updated. From ${stringify(node.oldValue)} to ${stringify(node.newValue)}`;
+        return [...acc, line];
       }
       case 'removed': {
-        const line = `Property '${keyPrefix.concat(node.key)}' was removed`;
-        return ([...acc, line]);
+        const line = `Property '${currentPath}' was removed`;
+        return [...acc, line];
       }
       case 'added': {
-        const line = `Property '${keyPrefix.concat(node.key)}' was added with value: ${stringify(node.value)}`;
-        return ([...acc, line]);
+        const line = `Property '${currentPath}' was added with value: ${stringify(node.value)}`;
+        return [...acc, line];
       }
       case 'nested': {
-        const line = makePlain(node.value, keyPrefix.concat(node.key, '.'));
-        return ([...acc, line]);
+        const nestedLines = makePlain(node.value, `${currentPath}.`);
+        return [...acc, nestedLines];
       }
       default:
-        throw new Error(`Unknown node type. ${node.type}`);
+        throw new Error(`Unknown node type: ${node.type}`);
     }
   }, []);
+
   return result.join('\n');
 };
 

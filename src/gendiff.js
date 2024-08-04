@@ -8,7 +8,9 @@ import makeFormatted from './formatter/formatter.js';
 const getContent = (path) => readFileSync(resolve(cwd(), path));
 const getFileType = (path) => extname(path).slice(1);
 
-const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
+const defoultFormat = 'stylish';
+
+const genDiff = (filepath1, filepath2, formatName = defoultFormat) => {
   const data1 = parse(getContent(filepath1), getFileType(filepath1));
   const data2 = parse(getContent(filepath2), getFileType(filepath2));
 

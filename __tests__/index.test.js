@@ -21,7 +21,7 @@ describe('genDiff functionality test', () => {
     expect(genDiff(filepath1, filepath2)).toEqual(expectedStylishResult);
     expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylishResult);
     expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlainResult);
-    expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).toEqual(expectedJSONResult);
+    expect(genDiff(filepath1, filepath2, 'json')).toEqual(expectedJSONResult);
   });
 
   test('YML and YAML cases', () => {
@@ -31,6 +31,6 @@ describe('genDiff functionality test', () => {
     expect(genDiff(filepath1, filepath2)).toEqual(expectedStylishResult);
     expect(genDiff(filepath1, filepath2, 'stylish')).toEqual(expectedStylishResult);
     expect(genDiff(filepath1, filepath2, 'plain')).toEqual(expectedPlainResult);
-    expect(JSON.parse(genDiff(filepath1, filepath2, 'json'))).toEqual(expectedJSONResult);
+    expect(genDiff(filepath1, filepath2, 'json')).toEqual(expectedJSONResult);
   });
 });
